@@ -2,6 +2,12 @@ import { Link } from 'react-router-dom';
 import { useGame } from '../context/GameContext.jsx';
 import { formatElapsed } from '../lib/sudoku.js';
 
+// Ensure base URL ends with / and path doesn't start with /
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
+  ? import.meta.env.BASE_URL 
+  : `${import.meta.env.BASE_URL}/`;
+const kittenImageUrl = `${baseUrl}kitten.png`;
+
 export default function HomePage() {
   const { bestTimes, history } = useGame();
   const recentGames = history.slice(0, 3);
@@ -10,7 +16,7 @@ export default function HomePage() {
     <section className="grid-2">
       <div className="panel card-hover">
         <span className="pill">Welcome</span>
-        <img src="/QingWen-YuweiMa-project2/kitten.png" alt="Cute kitten mascot" className="kitten-img" />
+        <img src={kittenImageUrl} alt="Cute kitten mascot" className="kitten-img" />
         <h1 className="page-title">Kitten Sudoku</h1>
         <p>Build logic, not bugs. This edition uses React, the Context API, and local storage for a fully interactive experience.</p>
         <p>
