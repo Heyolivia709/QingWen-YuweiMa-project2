@@ -22,7 +22,17 @@ export default function SiteLayout() {
     if (logoRef.current) {
       const baseUrl = import.meta.env.BASE_URL || '/QingWen-YuweiMa-project2/';
       const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
-      logoRef.current.style.backgroundImage = `url('${normalizedBaseUrl}kitten.png')`;
+      const imageUrl = `${normalizedBaseUrl}kitten.png`;
+      logoRef.current.style.backgroundImage = `url('${imageUrl}')`;
+      // Fallback: if image fails to load, try root path
+      const img = new Image();
+      img.onerror = () => {
+        // If image fails with base URL, try root path
+        if (normalizedBaseUrl !== '/') {
+          logoRef.current.style.backgroundImage = `url('/kitten.png')`;
+        }
+      };
+      img.src = imageUrl;
     }
   }, []);
 
