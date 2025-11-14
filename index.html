@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kitten Sudoku</title>
     <link rel="icon" type="image/png" href="/QingWen-YuweiMa-project2/kitten.png" />
+    <style>
+      /* Critical CSS to prevent navigation bar flash */
+      header.nav {
+        position: fixed;
+        height: 64px;
+        background: rgba(18,24,38,.88);
+        backdrop-filter: blur(8px);
+        z-index: 100;
+        top: 0;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        border-bottom: 1px solid rgba(148,163,184,.18);
+      }
+      @media (max-width: 759px) {
+        header.nav {
+          top: auto;
+          bottom: 0;
+          height: auto;
+          border-top: 1px solid rgba(148,163,184,.18);
+          border-bottom: none;
+        }
+      }
+      body {
+        padding-bottom: 64px;
+      }
+      @media (max-width: 759px) {
+        body {
+          padding-bottom: 100px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
