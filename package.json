@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR_USERNAME/QingWen-YuweiMa-project2.git"
+    "url": "git+https://github.com/Heyolivia709/QingWen-YuweiMa-project2.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/QingWen-YuweiMa-project2/issues"
+    "url": "https://github.com/Heyolivia709/QingWen-YuweiMa-project2/issues"
   },
-  "homepage": "https://YOUR_USERNAME.github.io/QingWen-YuweiMa-project2/",
+  "homepage": "https://Heyolivia709.github.io/QingWen-YuweiMa-project2/",
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
