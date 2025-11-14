@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { GameProvider } from './context/GameContext.jsx';
 import { UserProvider } from './context/UserContext.jsx';
 import SiteLayout from './components/SiteLayout.jsx';
@@ -11,15 +12,29 @@ import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 
-import { useLocation } from 'react-router-dom'; // import useLocation
+// Component to handle GitHub Pages 404 redirect
+function GitHubPagesRedirect() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // Handle GitHub Pages redirect format: /?/path
+    if (location.search.startsWith('?/')) {
+      const path = location.search.slice(2).replace(/~and~/g, '&');
+      navigate(path + location.hash, { replace: true });
+    }
+  }, [location, navigate]);
+
+  return null;
+}
 
 export default function App() {
-  // useLocation to get current path
   const location = useLocation();
 
   return (
     <UserProvider>
       <GameProvider>
+        <GitHubPagesRedirect />
         <Routes>
           <Route element={<SiteLayout />}>
             <Route index element={<HomePage />} />

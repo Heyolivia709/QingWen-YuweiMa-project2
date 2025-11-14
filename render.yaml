@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: sudoku-project
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: 20.x
+      - key: RENDER
+        value: "true"
+
