@@ -31,6 +31,11 @@ function GitHubPagesRedirect() {
 export default function App() {
   const location = useLocation();
 
+  // Debug: log current location (remove in production)
+  useEffect(() => {
+    console.log('Current location:', location.pathname, location.search);
+  }, [location]);
+
   return (
     <UserProvider>
       <GameProvider>
@@ -38,6 +43,7 @@ export default function App() {
         <Routes>
           <Route element={<SiteLayout />}>
             <Route index element={<HomePage />} />
+            <Route path="" element={<HomePage />} />
             <Route path="games" element={<SelectionPage />} />
 
                                                         
