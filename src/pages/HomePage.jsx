@@ -10,7 +10,7 @@ export default function HomePage() {
     <section className="grid-2">
       <div className="panel card-hover">
         <span className="pill">Welcome</span>
-        <img src="/kitten.png" alt="Cute kitten mascot" className="kitten-img" />
+        <img src={`${import.meta.env.BASE_URL}kitten.png`} alt="Cute kitten mascot" className="kitten-img" />
         <h1 className="page-title">Kitten Sudoku</h1>
         <p>Build logic, not bugs. This edition uses React, the Context API, and local storage for a fully interactive experience.</p>
         <p>

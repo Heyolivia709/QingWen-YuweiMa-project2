@@ -87,7 +87,7 @@ header.nav{
   font-weight: var(--font-weight-extrabold); 
   letter-spacing:.3px;
 }
-.brand .logo{width:28px; height:28px; border-radius:8px; background-image:url('/kitten.png'); background-size:cover; background-position:center; box-shadow:0 6px 14px rgba(34,211,238,.3); transform:rotate(10deg)}
+.brand .logo{width:28px; height:28px; border-radius:8px; background-image:url('/QingWen-YuweiMa-project2/kitten.png'); background-size:cover; background-position:center; box-shadow:0 6px 14px rgba(34,211,238,.3); transform:rotate(10deg)}
 .brand .title{color:#fff; font-family: var(--font-family);}
 .nav ul{display:flex; list-style:none; gap:6px; margin:0; padding:0}
 .nav a.link{
