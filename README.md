@@ -1,145 +1,76 @@
-# Kitten Sudoku — Static Mock (v5)
+# Kitten Sudoku — React Edition
+A lightweight Sudoku web app built with React + Vite, based on the static HTML/CSS version from Project 1.
+This version adds real game logic: puzzle generation, rule validation, page routing, a timer, and basic local storage persistence.
 
-A modern, responsive Sudoku game mockup built with pure HTML and CSS. Features a cute kitten mascot and clean, accessible design.
+##  Highlights
 
-## 🎮 Features
+- **Two Game Modes**: 6×6 (Easy) and 9×9 (Hard) boards generated on the fly.
+- **Smart Validation**: Instant conflict detection for rows, columns, and subgrids.
+- **Assist Tools**: In-browser solver, hint system, pause/resume timer.
+- **Run History & Leaderboard**: Best times and recent games stored locally via `localStorage`.
+- **Responsive UI**: Reuses the dark, neon-styled design and adapts smoothly to mobile.
 
-- **Two Game Modes**: 6×6 (Easy) and 9×9 (Hard) Sudoku boards
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Accessibility**: Screen reader friendly with proper ARIA labels
-- **Modern UI**: Dark theme with gradient accents and smooth animations
-- **No JavaScript**: Pure HTML/CSS implementation as required
+##  Tech Stack
 
-## 📁 Project Structure
+- Frontend: React 19, React Router 7
+- State: Context API + custom hooks
+- Build: Vite 7
+- Styling: Hand-crafted CSS (ported from the original project)
 
-```text
-sudoku-mock-v5/
-├── index.html              # Homepage with welcome message
-├── game-easy/              # 6×6 Sudoku game
-│   └── index.html
-├── game-hard/              # 9×9 Sudoku game
-│   └── index.html
-├── selection/              # Puzzle selection page
-│   └── index.html
-├── login/                  # User login form
-│   └── index.html
-├── register/               # User registration form
-│   └── index.html
-├── rules/                  # Game rules and credits
-│   └── index.html
-├── high-scores/            # Leaderboard
-│   └── index.html
-└── assets/
-    ├── css/
-    │   └── common.css      # All styles and responsive design
-    └── kitten.png          # Cute kitten mascot image
+##  Project Structure
+
+```
+sudoku-project/
+├── public/             # static assets (kitten.png)
+├── src/
+│   ├── components/     # layout components
+│   ├── context/        # GameContext + UserContext (mock only)
+│   ├── hooks/          # useGameTimer, useLocalStorage
+│   ├── lib/            # sudoku generation + validation logic
+│   ├── pages/          # all route pages
+│   └── styles/         # shared CSS
+├── index.html
+├── package.json
+└── vite.config.js
 ```
 
-## 🎯 Pages Overview
+##  Getting Started
 
-| Page | Description | Features |
-|------|-------------|----------|
-| **Home** | Landing page with kitten mascot | Welcome message, game links, responsive grid |
-| **Easy Game** | 6×6 Sudoku board | Timer display, game details sidebar |
-| **Hard Game** | 9×9 Sudoku board | Full Sudoku experience, accessibility labels |
-| **Selection** | Puzzle picker | Mock puzzle list with creator credits |
-| **Login** | User authentication | Centered form, validation patterns |
-| **Register** | Account creation | Password verification, form validation |
-| **Rules** | Game instructions | How-to-play guide, developer credits |
-| **High Scores** | Leaderboard | Mock data table, responsive design |
+```bash
+npm install
+npm run dev
+```
 
-## 🎨 Design Highlights
+The dev server runs at `http://localhost:5173` by default.
 
-### Visual Design
-- **Dark Theme**: Modern dark background with cyan/green accent colors
-- **Kitten Mascot**: Cute cat logo and hero image throughout the site
-- **Gradient Effects**: Subtle radial gradients for depth
-- **Smooth Animations**: Hover effects and transitions
+Production build:
 
-### Responsive Features
-- **Mobile-First**: Navigation moves to bottom on small screens
-- **Flexible Grid**: CSS Grid adapts from 2-column to single-column
-- **Touch-Friendly**: Larger tap targets on mobile devices
-- **Safe Spacing**: Proper margins to prevent edge touching
+```bash
+npm run build
+```
 
-### Accessibility
-- **Semantic HTML**: Proper header, nav, main, footer structure
-- **ARIA Labels**: Screen reader support for game boards
-- **Keyboard Navigation**: All interactive elements are focusable
-- **High Contrast**: Readable text colors and sufficient contrast
+##  State Management
 
-## 🛠️ Technical Implementation
+- `UserContext`:  Placeholder for future user state (login/register pages are mock-only for this assignment).
+- `GameContext`: Centralizes the board state, timer, hints, history, leaderboards, and mode selection.
+- `useGameTimer`: Lightweight timer built on `requestAnimationFrame` with pause/resume support.
+- `useLocalStorage`: JSON-backed read/write helper for persistent data.
 
-### CSS Architecture
-- **CSS Custom Properties**: Centralized color and spacing variables
-- **Mobile-First Media Queries**: Responsive breakpoints at 600px and 900px
-- **CSS Grid & Flexbox**: Modern layout techniques
-- **Pure CSS Sudoku Grid**: Thick subgrid lines created with gradients
+##  Sudoku Logic
 
-### Form Validation
-- **HTML5 Patterns**: `pattern="[1-6]"` for easy mode, `pattern="[1-9]"` for hard mode
-- **Input Constraints**: `maxlength="1"` and `inputmode="numeric"`
-- **Required Fields**: Form validation without JavaScript
+- `generatePuzzleByMode`: Produces valid solved boards and carves puzzles per difficulty.
+- `collectConflicts`: Scans rows, columns, and subgrids to highlight duplicates.
+- `solveBoard`: Backtracking solver used by hints and the auto-solve action.
 
-### Performance
-- **No External Dependencies**: Zero external fonts or libraries
-- **Optimized Images**: Single kitten.png asset
-- **Minimal CSS**: Efficient, well-organized stylesheet
+##  Page Overview
 
-## 📱 Mobile Responsiveness
+- `Home`: Welcome card, best times, and recent runs.
+- `Game/Easy` & `Game/Hard`: Playable boards with tools, notes, and timer controls.
+- `Selection`: Mode descriptions and quick-start buttons.
+- `High Scores`: Filterable leaderboard with personal best summary.
+- `Rules`: How-to-play guide and project highlights.
+- `Login` / `Register`: Local account management mock.
 
-The site adapts seamlessly across devices:
+##  Write-up Notes
 
-- **Desktop (≥900px)**: Full 2-column layout with top navigation
-- **Tablet (600-900px)**: Single column with adjusted spacing
-- **Mobile (<600px)**: Bottom navigation, stacked layout, touch-optimized
-
-Key mobile features:
-- Navigation bar moves to bottom for thumb accessibility
-- Sudoku boards scale appropriately with viewport
-- Forms remain centered and usable
-- Kitten image scales to 50% width on small screens
-
-## 🎮 Game Features
-
-### Sudoku Boards
-- **6×6 Easy Mode**: 3×2 subgrids, digits 1-6
-- **9×9 Hard Mode**: 3×3 subgrids, digits 1-9
-- **Visual Grid Lines**: Thick borders separating subgrids
-- **Input Validation**: Pattern-based number restrictions
-
-### User Interface
-- **Timer Display**: Mock timer showing elapsed time
-- **Game Details**: Sidebar with notes and information
-- **Progress Tracking**: Visual feedback for completed sections
-
-## 🚀 Getting Started
-
-1. **Clone or Download** the project files
-2. **Open** `index.html` in any modern web browser
-3. **Navigate** through the site using the responsive navigation
-4. **Try** both easy and hard Sudoku modes
-5. **Test** on different screen sizes for responsive behavior
-
-## 📋 Development Notes
-
-### What was the most challenging aspect?
-Creating a fully responsive design that works seamlessly across all device sizes. The Sudoku boards needed careful sizing calculations to prevent overflow while maintaining usability.
-
-### Key design decisions:
-- **Mobile-first approach**: Started with mobile layout, enhanced for larger screens
-- **CSS-only solutions**: Used gradients for Sudoku grid lines instead of images
-- **Semantic structure**: Proper HTML5 elements for accessibility and SEO
-- **Consistent spacing**: CSS custom properties for maintainable design
-
-### Future enhancements (if JavaScript were allowed):
-- Real Sudoku puzzle generation and validation
-- Progress saving and resume functionality
-- Interactive hints and error highlighting
-- Dynamic scoreboard with real user data
-- Theme customization options
-
-## 👥 Credits
-
-**Developers**: Qing Wen & Yuwei Ma  
-**Project**: Static HTML/CSS Mockup Assignment
+Write-up Notes Included separately

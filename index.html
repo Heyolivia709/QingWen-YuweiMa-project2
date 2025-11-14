@@ -1,57 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home • Kitten Sudoku</title>
-  <link rel="stylesheet" href="assets/css/common.css" />
-</head>
-<body>
-  <!-- ==========================================================================
-       Site Header & Navigation
-       ========================================================================== -->
-<header class="nav">
-  <div class="inner">
-    <a class="brand" href="index.html" aria-label="Kitten Sudoku Home">
-      <span class="logo" aria-hidden="true"></span>
-      <span class="title">Kitten Sudoku</span>
-    </a>
-    <!-- Primary Navigation Menu -->
-    <nav aria-label="Primary">
-      <ul><li><a class="link active" href="index.html">Home</a></li><li><a class="link" href="selection/">Select</a></li><li><a class="link" href="game-hard/">Hard</a></li><li><a class="link" href="game-easy/">Easy</a></li><li><a class="link" href="rules/">Rules</a></li><li><a class="link" href="high-scores/">Scores</a></li><li><a class="link" href="login/">Login</a></li><li><a class="link" href="register/">Register</a></li></ul>
-    </nav>
-  </div>
-</header>
-  <!-- ==========================================================================
-       Main Content Area
-       ========================================================================== -->
-<main class="container">
-  <section class="grid-2">
-    <div class="panel card-hover">
-      <span class="pill">Welcome</span>
-      <img src="assets/kitten.png" alt="Cute kitten mascot" class="kitten-img">
-      <h1 class="page-title">Kitten Sudoku</h1>
-      <p>Build logic, not bugs. This site is a <strong>static mock</strong> created with pure HTML and CSS.</p>
-      <p>Try a <a href="game-easy/">6×6</a> or a <a href="game-hard/">9×9</a> board, read the <a href="rules/">rules</a>, or pick one from the <a href="selection/">selection</a>.</p>
-      <ul class="clean mt-18" style="list-style:none; padding-left:0">
-        <li><a href="game-hard/"><span>Continue: Hard Board</span></a></li>
-        <li><a href="game-easy/"><span>Warm-up: Easy Board</span></a></li>
-      </ul>
-    </div>
-
-  </section>
-</main>
-  <!-- ==========================================================================
-       Site Footer
-       ========================================================================== -->
-<footer class="footer">
-  <div class="container">
-    <div class="row">
-      <div>© 2025 Kitten Sudoku — Static mock (HTML + CSS only)</div>
-      <div><a href="rules/">Credits</a></div>
-    </div>
-  </div>
-</footer>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kitten Sudoku</title>
+    <link rel="icon" type="image/png" href="/kitten.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
-<!-- trigger github pages -->
+
