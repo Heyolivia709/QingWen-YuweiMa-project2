@@ -12,6 +12,10 @@ basename = basename.endsWith('/') ? basename : basename + '/';
 // Remove leading slash issues
 basename = basename.startsWith('/') ? basename : '/' + basename;
 
+// Set CSS variable for base URL
+const baseUrl = basename;
+document.documentElement.style.setProperty('--base-url', baseUrl);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename={basename}>

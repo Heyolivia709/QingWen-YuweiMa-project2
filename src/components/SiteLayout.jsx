@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useUser } from '../context/UserContext.jsx';
+import { useEffect, useRef } from 'react';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
@@ -14,13 +15,23 @@ const NAV_LINKS = [
 
 export default function SiteLayout() {
   const { user, logout, isAuthenticated } = useUser();
+  const logoRef = useRef(null);
+
+  // Set logo background image dynamically based on base URL
+  useEffect(() => {
+    if (logoRef.current) {
+      const baseUrl = import.meta.env.BASE_URL || '/QingWen-YuweiMa-project2/';
+      const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
+      logoRef.current.style.backgroundImage = `url('${normalizedBaseUrl}kitten.png')`;
+    }
+  }, []);
 
   return (
     <div className="app-shell">
       <header className="nav">
         <div className="inner">
           <NavLink className="brand" to="/" aria-label="Kitten Sudoku Home">
-            <span className="logo" aria-hidden="true" />
+            <span ref={logoRef} className="logo" aria-hidden="true" />
             <span className="title">Kitten Sudoku</span>
           </NavLink>
           <nav aria-label="Primary">
